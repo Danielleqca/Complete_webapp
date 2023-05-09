@@ -28,7 +28,7 @@ footer:before {
 """
 
 st.markdown('''
-    # Bem vindo à QCA DataBoost!
+    # Bem vindo ao QCA DataBoost!
 ''')
 col1, col2 = st.columns(2)
 with col1:
