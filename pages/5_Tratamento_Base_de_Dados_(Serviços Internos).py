@@ -158,15 +158,14 @@ hide_menu = """
 }
 
 footer {
-    visibility:visible;
-    content: 'Teste teste teste';
+    visibility:visible;;
 }
 
-footer:after {
+footer:before {
     content:'Desenvolvido pela Eficiência Jurídica - Controladoria Jurídica';
     display:block;
     position:relative;
-    color:grey;
+    color:#6c6a76;
 }
 </style>
 """

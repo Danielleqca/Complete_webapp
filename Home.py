@@ -15,15 +15,14 @@ hide_menu = """
 }
 
 footer {
-    visibility:visible;
-    content: 'Teste teste teste';
+    visibility:visible;;
 }
 
-footer:after {
+footer:before {
     content:'Desenvolvido pela Eficiência Jurídica - Controladoria Jurídica';
     display:block;
     position:relative;
-    color:grey;
+    color:#6c6a76;
 }
 </style>
 """
@@ -38,3 +37,18 @@ with col1:
     ''')
 
 st.markdown(hide_menu, unsafe_allow_html=True)
+
+st.write('\n')
+st.write('\n')
+with st.container():
+    st.markdown("""
+        ##### Com a barra lateral, é possível acessar rapidamente as diversas funcionalidades do sistema. 👈""")
+    st.write('\n')
+    st.markdown("""
+        ##### Para ter acesso unicamente a cada sistema automatização, segue links abaixo:
+        1. [Divisão das abas em novas planilhas](https://separacaoplanilhas2.streamlit.app/)
+        2. [Divisão das planilhas por partição](https://excel-subfiles-python.streamlit.app/)
+        3. [Divisão de PDFs por Lista de Nomes e Habilitações](https://separacao-pdfs.streamlit.app/)
+        4. [Tratamento da Base de Dados (Serviços Internos)](https://tratamento-basededados.streamlit.app/)
+        5. [Tratamento da Base de Dados (Prazos Diários)](https://tratamento-automatico-prazos-diarios.streamlit.app/)
+    """)
