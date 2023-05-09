@@ -6,9 +6,6 @@ import streamlit as st
 import zipfile 
 import re
 from utils import bg_page
-import streamlit_theme
-
-streamlit_theme.set_theme({'theme': 'config.toml'})
 st.set_page_config(
     page_title="Divisão de PDFs (Habilitações)",
     page_icon='qca_logo_2.png',

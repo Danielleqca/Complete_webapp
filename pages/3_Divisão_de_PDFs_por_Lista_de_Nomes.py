@@ -5,9 +5,6 @@ from PyPDF2 import PdfReader, PdfWriter
 import streamlit as st
 import zipfile
 from utils import bg_page
-import streamlit_theme
-
-streamlit_theme.set_theme({'theme': 'config.toml'})
 st.set_page_config(
     page_title="Divisão de PDFs por Lista de Nomes",
     page_icon='qca_logo_2.png',
