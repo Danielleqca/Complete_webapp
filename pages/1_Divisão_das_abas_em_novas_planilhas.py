@@ -7,6 +7,9 @@ import os
 import zipfile
 import shutil
 from utils import bg_page
+import streamlit_theme
+
+streamlit_theme.set_theme({'theme': 'theme.toml'})
 
 st.set_page_config(
     page_title="Divisão de abas em novas planilhas",
@@ -32,6 +35,7 @@ footer:before {
 }
 </style>
 """
+
 
 
 with st.sidebar:

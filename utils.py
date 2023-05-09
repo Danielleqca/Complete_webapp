@@ -16,4 +16,3 @@ def bg_page(image_file):
     """,
     unsafe_allow_html=True
     )
-# bg_page('bg_light.png')

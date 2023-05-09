@@ -7,6 +7,9 @@ import os
 import base64
 from io import StringIO, BytesIO
 from utils import bg_page
+import streamlit_theme
+
+streamlit_theme.set_theme({'theme': 'theme.toml'})
 
 def generate_excel_download_link_agendados(df):
     hoje = date.today()
