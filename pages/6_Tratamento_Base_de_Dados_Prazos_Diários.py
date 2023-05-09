@@ -243,11 +243,11 @@ bg_page('bg_dark.png')
 hide_menu = """
 <style>
 #MainMenu {
-    visibility:hidden;
+    visibility:visible;
 }
 
 footer {
-    visibility:visible;;
+    visibility:visible;
 }
 
 footer:before {
