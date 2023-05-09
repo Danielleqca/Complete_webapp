@@ -4,6 +4,7 @@ import openpyxl
 from PyPDF2 import PdfReader, PdfWriter
 import streamlit as st
 import zipfile
+from utils import bg_page
 
 st.set_page_config(
     page_title="Divisão de PDFs por Lista de Nomes",
@@ -16,7 +17,7 @@ bg_page('bg_dark.png')
 hide_menu = """
 <style>
 #MainMenu {
-    visibility:visible;
+    visibility:hidden;
 }
 
 footer {

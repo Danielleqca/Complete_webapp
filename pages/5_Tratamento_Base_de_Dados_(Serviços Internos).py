@@ -6,6 +6,7 @@ import os
 
 import base64
 from io import StringIO, BytesIO
+from utils import bg_page
 
 def generate_excel_download_link(df):
     hoje = date.today()
@@ -153,7 +154,7 @@ bg_page('bg_dark.png')
 hide_menu = """
 <style>
 #MainMenu {
-    visibility:visible;
+    visibility:hidden;
 }
 
 footer {
