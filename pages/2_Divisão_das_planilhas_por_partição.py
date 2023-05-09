@@ -7,7 +7,7 @@ from io import StringIO, BytesIO
 from utils import bg_page
 import streamlit_theme
 
-streamlit_theme.set_theme({'theme': 'theme.toml'})
+streamlit_theme.set_theme({'theme': 'config.toml'})
 
 def generate_excel_download_link(df, i):
     # Credit Excel: https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/5

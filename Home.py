@@ -3,7 +3,7 @@ import streamlit as st
 from utils import bg_page
 import streamlit_theme
 
-streamlit_theme.set_theme({'theme': 'theme.toml'})
+streamlit_theme.set_theme({'theme': 'config.toml'})
 
 st.set_page_config(
     page_title="Home",
