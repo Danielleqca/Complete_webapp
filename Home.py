@@ -45,7 +45,7 @@ with st.container():
         ##### Com a barra lateral, é possível acessar rapidamente as diversas funcionalidades do sistema. 👈""")
     st.write('\n')
     st.markdown("""
-        ##### Para ter acesso unicamente a cada sistema automatização, segue links abaixo:
+        ##### Para ter acesso exclusivo a cada sistema de automatização, segue links abaixo:
         1. [Divisão das abas em novas planilhas](https://separacaoplanilhas2.streamlit.app/)
         2. [Divisão das planilhas por partição](https://excel-subfiles-python.streamlit.app/)
         3. [Divisão de PDFs por Lista de Nomes e Habilitações](https://separacao-pdfs.streamlit.app/)
