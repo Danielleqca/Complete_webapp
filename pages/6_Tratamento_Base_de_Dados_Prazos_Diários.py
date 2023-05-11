@@ -11,7 +11,7 @@ from utils import bg_page
 def generate_excel_download_link_agendados(df):
     hoje = date.today()
     towrite = BytesIO()
-    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    df.to_excel(towrite, index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="BASE_TRATADA_AGENDADOS_{hoje}.xlsx">Download Excel File</a>'
@@ -20,7 +20,7 @@ def generate_excel_download_link_agendados(df):
 def generate_excel_download_link_pendentes(df):
     hoje = date.today()
     towrite = BytesIO()
-    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    df.to_excel(towrite, index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="BASE_TRATADA_PENDENTES_{hoje}.xlsx">Download Excel File</a>'
