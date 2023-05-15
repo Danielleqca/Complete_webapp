@@ -105,26 +105,9 @@ def tratamento_prazos_diarios_agendados(base_agendados, base_centro_custo):
     # df_final['Prazo Revisão'] = df_final['Prazo Revisão'].dt.strftime('%d/%m/%Y')
     
     df_final['Data Cancelamento'] = pd.to_datetime(df_final['Data Cancelamento'], format = ('%d/%m/%Y'))
-    # df_final['Data Cancelamento'] = df_final['Data Cancelamento'].dt.strftime('%d/%m/%Y')
+    
     
     df_final['Data da contratação'] = pd.to_datetime(df_final['Data da contratação'], format = ('%d/%m/%Y'))
-    # df_final['Data da contratação'] = df_final['Data da contratação'].dt.strftime('%d/%m/%Y')
-    
-
-    # df_final['Data Cadastro Prazo'] = df_final.loc[:, ('Data Cadastro Prazo')].dt.strftime("%d/%m/%Y")
-    # df_final['Data do Prazo'] = df_final.loc[:, ('Data do Prazo')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Inicio Compromisso')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Conclusão')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Protocolo')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Auditoria Protocolo')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Prazo para Protocolo')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Prazo Automático')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Revisão')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Prazo Revisão')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data Cancelamento')].dt.strftime("%d/%m/%Y")
-    # df_final[''] = df_final.loc[:, ('Data da contratação')].dt.strftime("%d/%m/%Y")
-
-    # df_final.to_excel(f'BASE_TRATADA_AGENDADOS_{hoje}.xlsx', index=False, engine='openpyxl')
     return df_final
 
 def tratamento_prazos_diarios_pendentes(base_pendentes, base_centro_custo):
