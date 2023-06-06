@@ -10,7 +10,7 @@ from io import StringIO, BytesIO
 def generate_excel_download_link_nao_tratadas(df):
     hoje = date.today()
     towrite = BytesIO()
-    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    df.to_excel(towrite, index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="BASE_NAO_TRATADAS_{hoje}.xlsx">Download Excel File</a>'
@@ -19,7 +19,7 @@ def generate_excel_download_link_nao_tratadas(df):
 def generate_excel_download_link_ag_providencias(df):
     hoje = date.today()
     towrite = BytesIO()
-    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    df.to_excel(towrite, index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="BASE_AG_PROVIDENCIAS_{hoje}.xlsx">Download Excel File</a>'
@@ -36,7 +36,7 @@ def concatena_bases(base1, base2):
 def download_publi(dataset1, dataset2):
     hoje = date.today()    
     towrite = BytesIO()
-    df.to_excel(towrite, encoding="utf-8", index=False, header=True)  # write to BytesIO buffer
+    df.to_excel(towrite, index=False, header=True)  # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode()
     href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="BASE_GERAL_PUBLICAÇÕES_{hoje}.xlsx">Download Excel File</a>'
