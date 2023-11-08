@@ -34,7 +34,7 @@ if excel_file is not None and pdf_file is not None:
                 continue
         
             nf = df.at[pagina_num, 'Título Pirâmide']   # NF
-            nomeCorrespondente = df.at[pagina_num, 'Parte Adversa'] # NOME DO CORRESPONDENTE
+            nomeCorrespondente = df.at[pagina_num, 'Correspondente'] # NOME DO CORRESPONDENTE
             nProcesso = df.at[pagina_num, 'Número Processo']    # NUMERO DO PROCESSO
             idSolicitacao = df.at[pagina_num, ' Id Solicitacao']    # ID DA SOLICITACAO
 
