@@ -23,10 +23,14 @@ if excel_file is not None and pdf_file is not None:
     pdf_original = PdfReader(pdf_file)
 
     def clean_filename(filename):
-        valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
+        valid_chars = "-_.()& %s%s" % (string.ascii_letters, string.digits)
         # Adicionando caracteres especiais à lista de caracteres válidos
         valid_chars += 'çÇãÃõÕáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛàèìòùÀÈÌÒÙäëïöüÿÄËÏÖÜ'
-        return ''.join(c for c in filename if c in valid_chars)
+        # Substituindo caracteres especiais por equivalentes sem acento
+        filename = ''.join([c if c in valid_chars else ' ' for c in filename])
+        # Removendo espaços duplos e espaços no início e final do nome do arquivo
+        cleaned_filename = ' '.join(filename.split())
+        return cleaned_filename
     
     # Crie uma pasta temporária para salvar os PDFs gerados
     with tempfile.TemporaryDirectory() as temp_dir:
