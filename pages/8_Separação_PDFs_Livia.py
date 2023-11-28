@@ -24,8 +24,10 @@ if excel_file is not None and pdf_file is not None:
 
     def clean_filename(filename):
         valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
+        # Adicionando caracteres especiais à lista de caracteres válidos
+        valid_chars += 'çÇãÃõÕáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛàèìòùÀÈÌÒÙäëïöüÿÄËÏÖÜ'
         return ''.join(c for c in filename if c in valid_chars)
-
+    
     # Crie uma pasta temporária para salvar os PDFs gerados
     with tempfile.TemporaryDirectory() as temp_dir:
         for pagina_num in range(len(pdf_original.pages)):
@@ -34,7 +36,7 @@ if excel_file is not None and pdf_file is not None:
                 continue
         
             nf = df.at[pagina_num, 'Título Pirâmide']   # NF
-            nomeCorrespondente = df.at[pagina_num, 'Correspondente'] # NOME DO CORRESPONDENTE
+            nomeCorrespondente = df.at[pagina_num, 'Parte Adversa'] # NOME DO CORRESPONDENTE
             nProcesso = df.at[pagina_num, 'Número Processo']    # NUMERO DO PROCESSO
             idSolicitacao = df.at[pagina_num, ' Id Solicitacao']    # ID DA SOLICITACAO
 
