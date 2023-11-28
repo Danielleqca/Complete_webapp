@@ -7,6 +7,7 @@ import string
 import zipfile
 import tempfile
 import openpyxl
+import unicodedata
 
 # Título do aplicativo
 st.title('Aplicativo de Geração de PDFs')
@@ -23,8 +24,8 @@ if excel_file is not None and pdf_file is not None:
     pdf_original = PdfReader(pdf_file)
 
     def clean_filename(filename):
-        valid_chars = "-_.()& %s%s" % (string.ascii_letters, string.digits)
         # Adicionando caracteres especiais à lista de caracteres válidos
+        valid_chars = "-_().& %s%s" % (string.ascii_letters, string.digits)
         valid_chars += 'çÇãÃõÕáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛàèìòùÀÈÌÒÙäëïöüÿÄËÏÖÜ'
         # Substituindo caracteres especiais por equivalentes sem acento
         filename = ''.join([c if c in valid_chars else ' ' for c in filename])
