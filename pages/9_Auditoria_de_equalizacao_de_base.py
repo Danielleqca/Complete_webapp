@@ -66,6 +66,15 @@ class Automacao:
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'[^\w\s]', '', regex=True)
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'\s+', '', regex=True)
         
+    def preencher_nulos(self):
+        # Preencher valores nulos no df_performa
+        self.df_performa['NPC'].fillna('N/A', inplace=True)
+        self.df_performa['Número Processo'].fillna('N/A', inplace=True)
+
+        # Preencher valores nulos no df_cliente
+        self.df_cliente['Cód. Causa'].fillna('N/A', inplace=True)
+        self.df_cliente['Numeração Única'].fillna('N/A', inplace=True)
+        
     def processar_automacao(self):
         if self.df_cliente is None or self.df_performa is None:
             st.error("Por favor, faça o upload de ambos os arquivos antes de processar.")
@@ -74,6 +83,8 @@ class Automacao:
         st.spinner("Processando dados...")
         self.normalizar_num_processo(self.df_cliente, 'Numeração Única')
         self.normalizar_num_processo(self.df_performa, 'Número Processo')
+        
+        self.preencher_nulos()
 
         # TRATAMENTOS BASE PERFORMA
         self.df_performa = self.df_performa[['ID', 'NPC', 'Número Processo', 'Data Cadastro', 'Data Revisão', 'Fase', 'Célula', 'Advogado Responsável', 'Cliente', 'Centro de Custo',
