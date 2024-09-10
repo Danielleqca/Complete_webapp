@@ -63,6 +63,7 @@ class Automacao:
             nova_coluna = f'{coluna_num_processo} na Base do Cliente'
         df[nova_coluna] = df[coluna_num_processo]
         
+        df[coluna_num_processo] = df[coluna_num_processo].astype(str)	
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'[^\w\s]', '', regex=True)
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'\s+', '', regex=True)
         
@@ -85,6 +86,10 @@ class Automacao:
         self.normalizar_num_processo(self.df_performa, 'Número Processo')
         
         self.preencher_nulos()
+        
+        # Converter colunas NPC e Cód. Causa para o mesmo tipo (str) antes do merge
+        self.df_performa['NPC'] = self.df_performa['NPC'].astype(str)
+        self.df_cliente['Cód. Causa'] = self.df_cliente['Cód. Causa'].astype(str)
 
         # TRATAMENTOS BASE PERFORMA
         self.df_performa = self.df_performa[['ID', 'NPC', 'Número Processo', 'Data Cadastro', 'Data Revisão', 'Fase', 'Célula', 'Advogado Responsável', 'Cliente', 'Centro de Custo',
