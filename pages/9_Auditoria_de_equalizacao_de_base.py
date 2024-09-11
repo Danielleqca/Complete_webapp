@@ -87,9 +87,11 @@ class Automacao:
         
         self.preencher_nulos()
         
-        # Converter colunas NPC e Cód. Causa para o mesmo tipo (str) antes do merge
+        # Converter colunas NPC/Cód. Causa e Número Processo/Numeração Única para o mesmo tipo (str) antes do merge
         self.df_performa['NPC'] = self.df_performa['NPC'].astype(str)
         self.df_cliente['Cód. Causa'] = self.df_cliente['Cód. Causa'].astype(str)
+        self.df_performa['Número Processo'] = self.df_performa['Número Processo'].astype(str)
+        self.df_cliente['Numeração Única'] = self.df_cliente['Numeração Única'].astype(str)
 
         # TRATAMENTOS BASE PERFORMA
         self.df_performa = self.df_performa[['ID', 'NPC', 'Número Processo', 'Data Cadastro', 'Data Revisão', 'Fase', 'Célula', 'Advogado Responsável', 'Cliente', 'Centro de Custo',
