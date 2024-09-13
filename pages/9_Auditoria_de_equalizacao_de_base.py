@@ -80,6 +80,9 @@ class Automacao:
             pass
         
     def processar_automacao(self):
+        if 'Cód. Causa' not in self.df_cliente.columns:
+            self.df_cliente['Cód. Causa'] = 'N/A'
+            
         if self.df_cliente is None or self.df_performa is None:
             st.error("Por favor, faça o upload de ambos os arquivos antes de processar.")
             return
