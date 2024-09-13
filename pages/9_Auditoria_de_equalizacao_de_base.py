@@ -94,6 +94,9 @@ class Automacao:
         try:
             self.df_performa['NPC'] = self.df_performa['NPC'].astype(str)
             self.df_cliente['Cód. Causa'] = self.df_cliente['Cód. Causa'].astype(str)
+        except:
+            pass
+        try:
             self.df_performa['Número Processo'] = self.df_performa['Número Processo'].astype(str)
             self.df_cliente['Numeração Única'] = self.df_cliente['Numeração Única'].astype(str)
         except:
@@ -105,10 +108,9 @@ class Automacao:
 
         try:
             df_performa_procv = pd.merge(self.df_performa, self.df_cliente[['Cód. Causa']], left_on='NPC', right_on='Cód. Causa', how="left")
-        except: # Exception as e
-            pass
-            # st.error(f'Não foi possível realizar o PROCV na coluna de NPC da base do Performa: {e}')
-            # return
+        except Exception as e:
+            st.error(f'Não foi possível realizar o PROCV na coluna de NPC da base do Performa: {e}')
+            return
 
         try:
             df_performa_procv = pd.merge(df_performa_procv, self.df_cliente[['Numeração Única']], left_on='Número Processo', right_on='Numeração Única', how="left")
