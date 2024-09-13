@@ -68,6 +68,8 @@ class Automacao:
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'\s+', '', regex=True)
         
     def preencher_nulos(self):
+        if 'Cód. Causa' not in self.df_cliente.columns:
+            self.df_cliente['Cód. Causa'] = 'N/A'
         try:
             # Preencher valores nulos no df_performa
             self.df_performa['NPC'].fillna('N/A', inplace=True)
@@ -80,9 +82,6 @@ class Automacao:
             pass
         
     def processar_automacao(self):
-        if 'Cód. Causa' not in self.df_cliente.columns:
-            self.df_cliente['Cód. Causa'] = 'N/A'
-            
         if self.df_cliente is None or self.df_performa is None:
             st.error("Por favor, faça o upload de ambos os arquivos antes de processar.")
             return
