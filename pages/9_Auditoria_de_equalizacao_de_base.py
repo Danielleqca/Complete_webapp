@@ -68,13 +68,16 @@ class Automacao:
         df[coluna_num_processo] = df[coluna_num_processo].str.replace(r'\s+', '', regex=True)
         
     def preencher_nulos(self):
-        # Preencher valores nulos no df_performa
-        self.df_performa['NPC'].fillna('N/A', inplace=True)
-        self.df_performa['Número Processo'].fillna('N/A', inplace=True)
+        try:
+            # Preencher valores nulos no df_performa
+            self.df_performa['NPC'].fillna('N/A', inplace=True)
+            self.df_performa['Número Processo'].fillna('N/A', inplace=True)
 
-        # Preencher valores nulos no df_cliente
-        self.df_cliente['Cód. Causa'].fillna('N/A', inplace=True)
-        self.df_cliente['Numeração Única'].fillna('N/A', inplace=True)
+            # Preencher valores nulos no df_cliente
+            self.df_cliente['Cód. Causa'].fillna('N/A', inplace=True)
+            self.df_cliente['Numeração Única'].fillna('N/A', inplace=True)
+        except:
+            pass
         
     def processar_automacao(self):
         if self.df_cliente is None or self.df_performa is None:
@@ -88,11 +91,14 @@ class Automacao:
         self.preencher_nulos()
         
         # Converter colunas NPC/Cód. Causa e Número Processo/Numeração Única para o mesmo tipo (str) antes do merge
-        self.df_performa['NPC'] = self.df_performa['NPC'].astype(str)
-        self.df_cliente['Cód. Causa'] = self.df_cliente['Cód. Causa'].astype(str)
-        self.df_performa['Número Processo'] = self.df_performa['Número Processo'].astype(str)
-        self.df_cliente['Numeração Única'] = self.df_cliente['Numeração Única'].astype(str)
-
+        try:
+            self.df_performa['NPC'] = self.df_performa['NPC'].astype(str)
+            self.df_cliente['Cód. Causa'] = self.df_cliente['Cód. Causa'].astype(str)
+            self.df_performa['Número Processo'] = self.df_performa['Número Processo'].astype(str)
+            self.df_cliente['Numeração Única'] = self.df_cliente['Numeração Única'].astype(str)
+        except:
+            pass
+            
         # TRATAMENTOS BASE PERFORMA
         self.df_performa = self.df_performa[['ID', 'NPC', 'Número Processo', 'Data Cadastro', 'Data Revisão', 'Fase', 'Célula', 'Advogado Responsável', 'Cliente', 'Centro de Custo',
                                             'Tipo Processo', 'Status', 'Número Processo na Base do Performa']]
