@@ -110,15 +110,15 @@ class Automacao:
                                             'Tipo Processo', 'Status', 'Número Processo na Base do Performa']]
 
         try:
-            df_performa_procv = pd.merge(self.df_performa, self.df_cliente[['Cód. Causa']], left_on='NPC', right_on='Cód. Causa', how="left")
+            df_performa_procv = pd.merge(self.df_performa, self.df_cliente[['Numeração Única']], left_on='Número Processo', right_on='Numeração Única', how="left")
         except Exception as e:
-            st.error(f'Não foi possível realizar o PROCV na coluna de NPC da base do Performa: {e}')
+            st.error(f'Não foi possível realizar o PROCV na coluna de Número Processo da base do Performa: {e}')
             return
 
         try:
-            df_performa_procv = pd.merge(df_performa_procv, self.df_cliente[['Numeração Única']], left_on='Número Processo', right_on='Numeração Única', how="left")
+            df_performa_procv = pd.merge(df_performa_procv, self.df_cliente[['Cód. Causa']], left_on='NPC', right_on='Cód. Causa', how="left")
         except Exception as e:
-            st.error(f'Não foi possível realizar o PROCV na coluna Número Processo da base do Performa: {e}')
+            st.error(f'Não foi possível realizar o PROCV na coluna NPC da base do Performa: {e}')
             return
 
         condition = df_performa_procv['Cód. Causa'].isna() & df_performa_procv['Numeração Única'].isna()
@@ -128,15 +128,15 @@ class Automacao:
 
         # TRATAMENTOS BASE CLIENTE
         try:
-            df_cliente_procv = pd.merge(self.df_cliente, self.df_performa[['NPC']], left_on='Cód. Causa', right_on='NPC', how="left")
+            df_cliente_procv = pd.merge(self.df_cliente, self.df_performa[['Número Processo']], left_on='Numeração Única', right_on='Número Processo', how="left")
         except Exception as e:
-            st.error(f'Não foi possível realizar o PROCV na coluna de NPC da base do cliente: {e}')
+            st.error(f'Não foi possível realizar o PROCV na coluna de Numeração Única da base do cliente: {e}')
             return
 
         try:
-            df_cliente_procv = pd.merge(df_cliente_procv, self.df_performa[['Número Processo']], left_on='Numeração Única', right_on='Número Processo', how="left")
+            df_cliente_procv = pd.merge(df_cliente_procv, self.df_performa[['NPC']], left_on='Cód. Causa', right_on='NPC', how="left")
         except Exception as e:
-            st.error(f'Não foi possível realizar o PROCV na coluna Número Processo da base do cliente: {e}')
+            st.error(f'Não foi possível realizar o PROCV na coluna Cód. Causa da base do cliente: {e}')
             return
 
         condition = df_cliente_procv['NPC'].isna() & df_cliente_procv['Número Processo'].isna()
