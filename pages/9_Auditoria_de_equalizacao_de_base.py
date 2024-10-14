@@ -49,9 +49,11 @@ st.subheader("Instruções para uso correto da automação:")
 st.markdown("""
 **Para conseguir utilizar a automação com precisão, certifique-se de fazer as alterações necessárias na base do cliente. São elas:**
 
-1. Se encontrar a coluna correspondente ao 'NPC' da base do Performa na base do cliente, renomeie-a para **'Cód. Causa'**. Caso a base do cliente não tenha essa informação, prossiga para a próxima etapa.
+1. Se encontrar a coluna correspondente ao **'NPC'** da base do Performa na base do cliente, renomeie-a para **'Cód. Causa'**. Caso a base do cliente não tenha essa informação, prossiga para a próxima etapa.
 
-2. Altere o nome da coluna que representa o **'Número Processo'** na base do cliente para **'Numeração Única'**. Essa padronização é fundamental para a correta identificação e acompanhamento dos processos.
+2. Altere o nome da coluna que representa o **'Número Processo'** na base do cliente para **'Numeração Única'**. 
+
+**Essa padronização é fundamental para a correta identificação e acompanhamento dos processos.**
 """)
 
 # Initialize session state variables
