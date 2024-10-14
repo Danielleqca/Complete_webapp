@@ -3,6 +3,7 @@ import streamlit as st
 import io
 from utils import bg_page
 
+# Configurações da Página no Streamlit
 st.set_page_config(
     page_title="Auditoria de Equalização de Base",
     page_icon='qca_logo_2.png',
@@ -43,6 +44,16 @@ st.subheader("2. Faça o upload da base do Performa:")
 st.markdown(hide_menu, unsafe_allow_html=True)
 base_performa = st.file_uploader("Selecione o arquivo da base do Performa", type=["xlsx"])
 
+st.subheader("Instruções para uso correto da automação:")
+
+st.markdown("""
+**Para conseguir utilizar a automação com precisão, certifique-se de fazer as alterações necessárias na base do cliente. São elas:**
+
+1. Se encontrar a coluna correspondente ao 'NPC' da base do Performa na base do cliente, renomeie-a para **'Cód. Causa'**. Caso a base do cliente não tenha essa informação, prossiga para a próxima etapa.
+
+2. Altere o nome da coluna que representa o **'Número Processo'** na base do cliente para **'Numeração Única'**. Essa padronização é fundamental para a correta identificação e acompanhamento dos processos.
+""")
+
 # Initialize session state variables
 if 'processado' not in st.session_state:
     st.session_state.processado = False
@@ -69,7 +80,7 @@ class Automacao:
         
     def preencher_nulos(self):
         if 'Cód. Causa' not in self.df_cliente.columns:
-            self.df_cliente['Cód. Causa'] = 'N/A'
+            self.df_cliente['Cód. Causa'] = '0'
         try:
             # Preencher valores nulos no df_performa
             self.df_performa['NPC'].fillna('N/A', inplace=True)
